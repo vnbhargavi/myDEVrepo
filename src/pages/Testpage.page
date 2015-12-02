@@ -1,0 +1,29 @@
+<apex:page controller="Optycontroller">
+  <!-- Begin Default Content REMOVE THIS -->
+ 
+<html>
+<body>
+  <apex:form >
+ <apex:pageblock >
+ <apex:pageblockTable value="{!OptyList}" var="opty">
+ <apex:column headerValue="Select Opty">
+ <apex:actionSupport event="onclick" action="{!QuoteList}" reRender="quotetab,showtab">
+ <input type="radio" name ="isselected" />
+ <apex:param value="{!isselected}"/>
+ </apex:actionsupport>
+ </apex:column>
+ <apex:column value="{!opty.optyObj.name}"/>
+ <apex:column value="{!opty.optyObj.stagename}"/>
+ 
+ </apex:pageblockTable>
+ 
+ </apex:pageblock>
+ <apex:pageblock id="quoteTab">
+ <apex:pageblockTable value="{!retQotelist}" var="qtObj" id="showtab" >
+ <apex:column value="{!qtObj.name}"/>
+ </apex:pageblockTable>
+ </apex:pageblock>
+  </apex:form>
+ </body> 
+  </html>
+</apex:page>

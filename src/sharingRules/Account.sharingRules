@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>ICBC_account</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Display only ICBC accounts</description>
+        <label>ICBC account</label>
+        <sharedTo>
+            <role>ICBC</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>ICBC</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>SBG_Accounts</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>SBG Accounts</label>
+        <sharedTo>
+            <role>SBG</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>SBG</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

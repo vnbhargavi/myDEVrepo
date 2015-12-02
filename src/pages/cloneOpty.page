@@ -1,0 +1,18 @@
+<apex:page Controller="cloneOpptyCls" tabstyle="opportunity">
+  <!-- Begin Default Content REMOVE THIS -->
+  <apex:form >
+  <apex:pageBlock >
+ 
+  Accountid<apex:inputField value="{!opptyObj.accountid}" />
+  <!-- End Default Content REMOVE THIS -->
+   <apex:pageblockButtons location="top">
+   <apex:commandButton value="Clone" action="{!cloneOpty}" />
+</apex:pageblockButtons>
+  <apex:pageblockButtons location="bottom">
+   <apex:commandButton value="Add Accounts" action="{!cloneOpty}"  />
+   <apex:commandButton value="Remove Selected" action="{!cloneOpty}" />
+  </apex:pageblockButtons>
+  </apex:pageBlock>
+  
+   </apex:form> 
+</apex:page>

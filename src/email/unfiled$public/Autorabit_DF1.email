@@ -1,0 +1,10 @@
+<html>
+<body>
+<p>
+Hi {!Contact.Name},</p>
+<img src="https://c.ap1.content.force.com/servlet/servlet.ImageServer?id=01590000008Slzh&oid=00D90000000Yryd" alt="Company Logo" height="556" width="722"/>
+<p>Regards
+<br/>AutoRabit Team
+.</p>
+</body>
+</html>

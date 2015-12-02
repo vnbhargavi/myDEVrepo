@@ -1,0 +1,49 @@
+<apex:page controller="SfdcAddSpecialTermsClass_1" showHeader="false" sidebar="false">
+<script type="text/javascript">
+function validateCheck(){
+            var inputElems = document.getElementsByTagName("input");
+            count = 0;
+            for (var i=0; i< inputElems.length; i++) {
+                if (inputElems[i].type === "checkbox" && inputElems[i].checked === true) {
+                    count++;
+                    //break;
+                }
+            } 
+            if(count < 1 ){
+                return alert('Please select at least 1 row ');
+            } else{
+             if(count > 1 ){
+                return alert('Maximum of 1 record can be selected !!');
+            } else{
+                return true;
+            }   
+            }
+        }
+        </script>
+    <apex:form >
+         <apex:pageBlock >
+             
+            <br/><br/>
+ 
+            <!-- Table for displaying Contacts -->
+            <apex:pageBlockTable value="{!contractList}" var="c" id="table">
+ 
+                <!-- The 'selected' property in the ContactWrapper class -->
+                <apex:column >
+                    <apex:inputCheckbox value="{!c.selected}"  >
+                    <apex:actionSupport event="onclick" action="{!doProcessSelection}"  />
+                     </apex:inputCheckbox>
+                </apex:column>
+ 
+                <!-- The contact fields within the ContactWrapper -->
+                <apex:column value="{!c.tContract.ContractNumber}" />
+                <apex:column value="{!c.tContract.status}" />
+              <!--  <apex:column value="{!c.tContract.Email}" /> -->
+               
+ 
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+ <apex:commandButton value="Ok" onclick="if(!validateCheck()) return false;" styleClass="" />
+    </apex:form>
+
+</apex:page>

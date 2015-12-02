@@ -1,0 +1,5 @@
+<apex:page controller="POCController" >
+  <apex:form >
+  <apex:commandButton value="CLick me" action="{!Clickbutton}"/>
+  </apex:form>
+</apex:page>

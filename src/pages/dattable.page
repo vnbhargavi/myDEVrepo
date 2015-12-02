@@ -1,0 +1,31 @@
+<apex:page Controller="TestyController">
+    <apex:form > 
+       <apex:pageBlock title="Code Quality Check">
+         <apex:pageBlockSection title="My Content Section" columns="2">
+                <apex:pageBlockTable value="{!tabledata}" var="results" >
+                    <apex:column headerValue="Query">
+                    <apex:outputLink >{!results.querykeystr}</apex:outputLink></apex:column>
+                    <apex:column headerValue="Group">
+                    <apex:outputText >{!results.groupkeystr}</apex:outputText></apex:column>
+                    <apex:column headerValue="Problems Found" value="{!results.countint}"> </apex:column>  
+                    <apex:column headerValue="Severity">                  
+                        <apex:image url="/img/msg_icons/error16.png" rendered="{!results.querykeystr = 'Sharing'}"/>                
+                        <apex:image url="/img/msg_icons/warning16.png" rendered="{!results.querykeystr = 'Queryw/o clause'}"/>                         
+                    </apex:column>
+                    </apex:pageBlockTable>
+                                                   </apex:pageBlockSection>
+        </apex:pageBlock> 
+       
+          </apex:form>     
+        
+        <apex:pageBlock title="Graphical reperesntation">
+         <apex:pageBlockSection title="My graph" columns="2">
+                  <apex:chart height="350" width="450" data="{!pieData}" theme="Salesforce">
+        <apex:pieSeries dataField="data" labelField="name"/>
+        <apex:legend position="top"/>
+    </apex:chart>
+            </apex:pageBlockSection>
+             </apex:pageBlock> 
+             
+       
+</apex:page>

@@ -1,0 +1,21 @@
+<apex:page standardController="Account" extensions="Extension1Class,Extension2Class">
+  <!-- Begin Default Content REMOVE THIS -->
+ 
+  <apex:form >
+  <apex:pageBlock title="Enter Below data" >
+  <apex:pageBlockSection columns="1">
+  <apex:inputText value="{!AccountNameText}" label="Account Name"/>
+   <apex:inputText value="{!Phone }" label="Phone No:"/>
+    <apex:inputText value="{!Email}" label="Email"/>
+     <apex:inputText value="{!AddressText}" label="Address"/>
+     
+  </apex:pageBlockSection>
+  <apex:pageBlockButtons location="bottom">
+  <apex:commandButton value="Insert" action="{!InsertData}"/>
+  <apex:commandButton value="Update" action="{!UpdateData}"/>
+  
+  </apex:pageBlockButtons>
+  </apex:pageBlock>
+  </apex:form>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

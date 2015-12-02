@@ -1,0 +1,184 @@
+<apex:page sidebar="false">
+
+ <apex:includeScript value="{!urlFor($Resource.ext4, 'ext-4.0.7/ext-all.js')}"/>  
+    <apex:stylesheet value="{!urlFor($Resource.ext4, 'ext-4.0.7/resources/css/ext-all.css')}"/>
+       <apex:stylesheet value="{!urlFor($Resource.ext4, 'ext-4.0.7/resources/css/ext-all-gray.css')}"/>
+  <html>
+<head>
+    <script type="text/javascript">
+    Ext.require(['Ext.data.*']);
+
+Ext.onReady(function() {
+
+    window.generateData = function(n, floor){
+        var data = [],
+            p = (Math.random() *  11) + 1,
+            i;
+            
+        floor = (!floor && floor !== 0)? 20 : floor;
+        
+        for (i = 0; i < (n || 12); i++) {
+            data.push({
+                name: Ext.Date.monthNames[i % 12],
+                data1: Math.floor(Math.max((Math.random() * 100), floor)),
+                data2: Math.floor(Math.max((Math.random() * 100), floor)),
+                data3: Math.floor(Math.max((Math.random() * 100), floor)),
+                data4: Math.floor(Math.max((Math.random() * 100), floor)),
+                data5: Math.floor(Math.max((Math.random() * 100), floor)),
+                data6: Math.floor(Math.max((Math.random() * 100), floor)),
+                data7: Math.floor(Math.max((Math.random() * 100), floor)),
+                data8: Math.floor(Math.max((Math.random() * 100), floor)),
+                data9: Math.floor(Math.max((Math.random() * 100), floor))
+            });
+        }
+        return data;
+    };
+    
+    window.generateDataNegative = function(n, floor){
+        var data = [],
+            p = (Math.random() *  11) + 1,
+            i;
+            
+        floor = (!floor && floor !== 0)? 20 : floor;
+            
+        for (i = 0; i < (n || 12); i++) {
+            data.push({
+                name: Ext.Date.monthNames[i % 12],
+                data1: Math.floor(((Math.random() - 0.5) * 100), floor),
+                data2: Math.floor(((Math.random() - 0.5) * 100), floor),
+                data3: Math.floor(((Math.random() - 0.5) * 100), floor),
+                data4: Math.floor(((Math.random() - 0.5) * 100), floor),
+                data5: Math.floor(((Math.random() - 0.5) * 100), floor),
+                data6: Math.floor(((Math.random() - 0.5) * 100), floor),
+                data7: Math.floor(((Math.random() - 0.5) * 100), floor),
+                data8: Math.floor(((Math.random() - 0.5) * 100), floor),
+                data9: Math.floor(((Math.random() - 0.5) * 100), floor)
+            });
+        }
+        return data;
+    };
+
+    window.store1 = Ext.create('Ext.data.JsonStore', {
+        fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data9', 'data9'],
+        data: generateData()
+    });
+    window.storeNegatives = Ext.create('Ext.data.JsonStore', {
+        fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data9', 'data9'],
+        data: generateDataNegative()
+    });
+    window.store3 = Ext.create('Ext.data.JsonStore', {
+        fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data9', 'data9'],
+        data: generateData()
+    });
+    window.store4 = Ext.create('Ext.data.JsonStore', {
+        fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data9', 'data9'],
+        data: generateData()
+    });
+    window.store5 = Ext.create('Ext.data.JsonStore', {
+        fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data9', 'data9'],
+        data: generateData()
+    });    
+    
+    
+});
+    </script>
+    
+     <script >
+    Ext.require('Ext.chart.*');
+Ext.require(['Ext.layout.container.Fit', 'Ext.window.MessageBox']);
+
+Ext.onReady(function () {
+    store1.loadData(generateData(6, 20));
+
+    var donut = false,
+        chart = Ext.create('Ext.chart.Chart', {
+            xtype: 'chart',
+            id: 'chartCmp',
+            animate: true,
+            store: store1,
+            shadow: true,
+            legend: {
+                position: 'right'
+            },
+            insetPadding: 60,
+            theme: 'Base:gradients',
+            series: [{
+                type: 'pie',
+                field: 'data1',
+                showInLegend: true,
+                donut: donut,
+                tips: {
+                  trackMouse: true,
+                  width: 140,
+                  height: 28,
+                  renderer: function(storeItem, item) {
+                    //calculate percentage.
+                    var total = 0;
+                    store1.each(function(rec) {
+                        total += rec.get('data1');
+                    });
+                    this.setTitle(storeItem.get('name') + ': ' + Math.round(storeItem.get('data1') / total * 100) + '%');
+                  }
+                },
+                highlight: {
+                  segment: {
+                    margin: 20
+                  }
+                },
+                label: {
+                    field: 'name',
+                    display: 'rotate',
+                    contrast: true,
+                    font: '18px Arial'
+                }
+            }]
+        });
+
+
+    var panel1 = Ext.create('widget.panel', {
+        width: 600,
+        height: 600,
+        title: 'Semester Trends',
+        renderTo: Ext.getBody(),
+        layout: 'fit',
+        tbar: [{
+            text: 'Save Chart',
+            handler: function() {
+                Ext.MessageBox.confirm('Confirm Download', 'Would you like to download the chart as an image?', function(choice){
+                    if(choice == 'yes'){
+                        chart.save({
+                            type: 'image/png'
+                        });
+                    }
+                });
+            }
+        }, {
+            text: 'Reload Data',
+            handler: function() {
+                store1.loadData(generateData(6, 20));
+            }
+        }, {
+            enableToggle: true,
+            pressed: false,
+            text: 'Donut',
+            toggleHandler: function(btn, pressed) {
+                var chart = Ext.getCmp('chartCmp');
+                chart.series.first().donut = pressed ? 35 : false;
+                chart.refresh();
+            }
+        }],
+        items: chart
+    });
+});
+    </script>
+</head>
+<body id="docbody">
+        <h1>Pie Chart Example</h1>
+        <div style="margin: 10px;">
+        <p>
+            Display 5 sets of random data using a pie chart. Reload data will randomly generate a new set of data in the store.  Toggle Donut button will dynamically change the chart between a Donut and Pie chart. Click or hover on the legend items to highlight and remove them from the chart. In addition contrast detection has been turned on to dynamically change the font color based on the color of the item it is on. <a href="Pie.js">View Source</a>
+        </p>
+        </div>
+    </body>
+</html>
+</apex:page>

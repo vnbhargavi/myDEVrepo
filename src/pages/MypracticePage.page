@@ -1,0 +1,17 @@
+<apex:page controller="myPracticeClass">
+  <apex:form >
+   <!--<apex:pageBlock title="My Content">
+
+        <apex:pageBlockTable value="{!wrapList}" var="item" id="myblock">
+       <apex:column title="Select" headerValue="Select">
+         <apex:inputcheckbox value="{!item.isselected }"/>
+     </apex:column> 
+     <apex:actionsupport action="{!getseleecteed}" rerender="myblock" event="onselect"/> 
+        <apex:column value="{!item.conObj.lastname}"/>
+       
+        </apex:pageBlockTable>
+       
+        </apex:pageBlock> -->
+          '{!oput}'
+        </apex:form>
+</apex:page>

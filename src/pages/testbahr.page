@@ -1,0 +1,15 @@
+<apex:page standardController="Account">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  <apex:form >
+  <apex:pageblock >
+  <apex:pageblockTable value="{!account.contacts}" var="c">
+  <apex:selectRadio value="{!account.name}"/>
+ <apex:column value="{!c.name}"/>
+
+  </apex:pageblockTable>
+  </apex:pageblock>
+  </apex:form>
+  This is your new Page
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

@@ -1,0 +1,72 @@
+<apex:page controller="multiselectPicklist" tabStyle="User" sideBar="false">
+
+<apex:form >  
+ <apex:sectionHeader title="Users by Region Report"></apex:sectionHeader>  
+   <apex:pageBlock id="pageBlock" title="Search Filter">   
+    <apex:pageMessages >
+    </apex:pageMessages> 
+  <apex:pageBlockSection title="Filters" columns="2" collapsible="true">   
+     <apex:inputField id="salesRegions" value="{!salesRegions.Sales_Regions__c}" >
+  </apex:inputField>  
+    </apex:pageBlockSection> 
+   </apex:pageBlock> 
+    <apex:pageBlock id="searchResults" title="Results">   
+  <apex:pageBlockButtons >    
+  <apex:commandButton value="Run Report" action="{!runReport}" status="status" rerender="searchResults"></apex:commandButton>     </apex:pageBlockButtons>     
+    <apex:pageMessages >
+  </apex:pageMessages>  
+      <apex:pageBlockTable value="{!users}" var="u" rendered="{!NOT(ISNULL(users))}" rules="cols">  
+        <apex:column value="{!u.UserName}">
+  </apex:column>     
+<apex:column value="{!u.IsActive}"/>   
+          </apex:pageBlockTable> 
+       </apex:pageBlock>
+       
+       <apex:repeat value="{!Index}" var="i">
+
+<div id="TabPanel{!i}">
+
+<script>
+
+currentTabPanelItems[{!i}]=[];
+
+var tabs=[];
+
+
+Ext.onReady(function() {
+
+tabs[{!i}] = new Ext.TabPanel({
+
+renderTo: '{!$Component.theTab}',
+
+width: '900', 
+
+frame: true, 
+
+defaults: { autoHeight: true}, 
+
+enableTabScroll : true,
+
+items: currentTabPanelItems[{!i}] 
+
+});
+
+if({!i}!=0)
+
+document.getElementById("TabPanel".concat({!i})).style.visibility='hidden';
+
+}
+
+); 
+
+</script> 
+
+<apex:OutputPanel id="theTab"/> 
+
+</div>
+
+</apex:repeat>
+
+
+           </apex:form>
+         </apex:Page>

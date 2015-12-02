@@ -1,0 +1,15 @@
+<apex:page >
+  
+  <html>
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page
+  <TABLE CELLSPACING="4" CELLPADDING="4">
+<TR>
+<TD BGCOLOR="#ffff00">yellow</td>
+
+</TR>
+</table>
+  <!-- End Default Content REMOVE THIS -->
+  </html>
+</apex:page>

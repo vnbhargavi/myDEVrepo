@@ -1,0 +1,33 @@
+<apex:page controller="PdfExampleController" renderAs="pdf">
+  <html>
+<head>
+<style>
+
+td {
+
+max-width: 10px;
+word-wrap: break-word;
+}
+
+</style>
+</head>
+<body>
+
+<table align="center">
+  
+  <tr>
+    <td>January</td>
+    <td>$100fgsdkgjdlfgjdlgjdfl'gjdfgjdf'gsdf;jdslkjgsd'kljskflhjgkhskf'k</td>
+  </tr>
+  <tr>
+    <td>February</td>
+    <td>$80</td>
+  </tr>
+</table>
+
+<p>The align attribute allows text to be wrapped around the table.</p>
+<p>The align attribute is not supported in HTML5. Use CSS instead.</p>
+
+</body>
+</html>
+</apex:page>

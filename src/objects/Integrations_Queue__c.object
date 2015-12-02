@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Integrations_Message__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Integrations Message</label>
+        <referenceTo>Integrations_Message__c</referenceTo>
+        <relationshipLabel>Integrations Queues</relationshipLabel>
+        <relationshipName>Integrations_Queues</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Integrations Queue</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Integrations_Message__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>AnalysP_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Integrations_Queue__c.AnalysP</value>
+        </filters>
+        <label>AnalysP Queue</label>
+    </listViews>
+    <listViews>
+        <fullName>B2B_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Integrations_Queue__c.B2B</value>
+        </filters>
+        <label>B2B Queue</label>
+    </listViews>
+    <listViews>
+        <fullName>MEC_Queue</fullName>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Integrations_Queue__c.MEC</value>
+        </filters>
+        <label>MEC Queue</label>
+    </listViews>
+    <listViews>
+        <fullName>NID_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Integrations_Queue__c.NID</value>
+        </filters>
+        <label>NID Queue</label>
+    </listViews>
+    <listViews>
+        <fullName>Oblicore_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Integrations_Queue__c.Oblicore</value>
+        </filters>
+        <label>Oblicore Queue</label>
+    </listViews>
+    <listViews>
+        <fullName>SMS_Gateway_Queue</fullName>
+        <columns>NAME</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Integrations_Message__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Integrations_Queue__c.SMS_Gateway</value>
+        </filters>
+        <label>SMS Gateway Queue</label>
+    </listViews>
+    <nameField>
+        <displayFormat>IQ-{0000}</displayFormat>
+        <label>Integrations Queue Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Integrations Queues</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>AnalysP</fullName>
+        <active>true</active>
+        <description>This Record Type  used for  AnalysP Interface</description>
+        <label>AnalysP</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>B2B</fullName>
+        <active>true</active>
+        <description>B2B Interface Queue</description>
+        <label>B2B</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>MEC</fullName>
+        <active>true</active>
+        <description>This Record Type  used for MEC Interface</description>
+        <label>MEC</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>NID</fullName>
+        <active>true</active>
+        <description>This Record Type  used for  NID Interface</description>
+        <label>NID</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Oblicore</fullName>
+        <active>true</active>
+        <description>This Record Type  used for  Oblicore Interface</description>
+        <label>Oblicore</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>SMS_Gateway</fullName>
+        <active>true</active>
+        <description>This Record Type  used for  SMS Gateway Interface</description>
+        <label>SMS Gateway</label>
+    </recordTypes>
+    <searchLayouts>
+        <listViewButtons>ResendQueue</listViewButtons>
+        <searchFilterFields>NAME</searchFilterFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <sharingReasons>
+        <fullName>xyz__c</fullName>
+        <label>xyz</label>
+    </sharingReasons>
+    <validationRules>
+        <fullName>Category_Mismatch</fullName>
+        <active>true</active>
+        <description>Category of Queue and Integrations Acknowledgment should be the same</description>
+        <errorConditionFormula>NOT(
+OR(
+AND
+(
+Text(Integrations_Message__r.Category__c) == &apos;MEC&apos; ,
+ RecordTypeId = &apos;012P00000008d5E&apos;
+),
+AND
+(
+Text(Integrations_Message__r.Category__c) == &apos;AnalysP&apos; ,
+ RecordTypeId = &apos;012P00000008d5D&apos;
+),
+
+AND
+(
+Text(Integrations_Message__r.Category__c) == &apos;NID&apos; ,
+ RecordTypeId = &apos;012P00000008d5N&apos;
+),
+
+AND
+(
+Text(Integrations_Message__r.Category__c) == &apos;B2B&apos; ,
+ RecordTypeId = &apos;012P00000008d58&apos;
+),
+AND
+(
+Text(Integrations_Message__r.Category__c) == &apos;Oblicore&apos; ,
+ RecordTypeId = &apos;012P00000008d5I&apos;
+),
+AND
+(
+Text(Integrations_Message__r.Category__c) == &apos;SMS Gateway&apos; ,
+ RecordTypeId = &apos;012P00000008d5S&apos;
+)
+)
+)</errorConditionFormula>
+        <errorMessage>Category of Queue and Integrations Acknowledgment should be the same</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>ResendQueue</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>ResendQueue</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/Integrations_Acknowledgements</url>
+    </webLinks>
+</CustomObject>

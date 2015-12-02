@@ -1,0 +1,59 @@
+<apex:page controller="OppsController" sidebar="false" showHeader="false">
+<apex:form >
+<apex:image id="theImage" value="{!$Resource.backgroundstyles}" width="500" height="500"/>
+<apex:dataTable value="{!OpportunitiesWithIndex}" var="oppWrapped">
+<apex:column >
+<apex:facet name="header">Opportunity</apex:facet>
+<apex:outputField value="{!oppWrapped.opp.name}"/>
+</apex:column>
+<apex:column >
+<apex:facet name="header">Amount</apex:facet>
+<apex:inputField value="{!oppWrapped.opp.amount}"/>
+</apex:column>
+</apex:dataTable>
+</apex:form>
+
+<apex:panelGrid columns="3" id="theGrid">
+        <apex:outputText value="First" id="theFirst"/>
+        <apex:outputText value="Second" id="theSecond"/>
+        <apex:outputText value="Third" id="theThird"/>
+        <apex:outputText value="Fourth" id="theFourth"/>
+    </apex:panelGrid>
+    <apex:panelBar >
+
+        <apex:panelBarItem label="Item 1">data 1</apex:panelBarItem>
+
+        <apex:panelBarItem label="Item 2">data 2</apex:panelBarItem>
+
+        <apex:panelBarItem label="Item 3">data 3</apex:panelBarItem>
+
+    </apex:panelBar>
+
+
+  <apex:pageMessages />
+
+  <apex:panelBar >
+
+    <apex:panelBarItem label="Item One" 
+
+          onenter="alert('Entering item one');" 
+
+          onleave="alert('Leaving item one');">
+
+      Item one content
+
+    </apex:panelBarItem>
+
+    <apex:panelBarItem label="Item Two" 
+
+          onenter="alert('Entering item two');" 
+
+          onleave="alert('Leaving item two');">
+
+      Item two content
+
+    </apex:panelBarItem>
+
+  </apex:panelBar>
+
+</apex:page>

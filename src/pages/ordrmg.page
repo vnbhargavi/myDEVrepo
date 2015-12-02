@@ -1,0 +1,110 @@
+<apex:page standardcontroller="Account" extensions="oeController" showheader="true" recordSetVar="records">
+
+<apex:sectionHeader title="Customer information"/>
+ <apex:includeScript value="{!urlFor($Resource.extjs, 'ext-3.0.0/adapter/ext/ext-base.js')}"/>
+    <apex:includeScript value="{!urlFor($Resource.extjs, 'ext-3.0.0/ext-all.js')}"/>  
+    <apex:stylesheet value="{!urlFor($Resource.extjs, 'ext-3.0.0/resources/css/ext-all.css')}"/>
+     <apex:form >
+  <apex:pageBlock >
+  <apex:pageBlockSection title="account information">
+  <apex:inputField id="name1" value="{!acc.Name}"/>
+  </apex:pageBlockSection>
+  </apex:pageBlock>
+   </apex:form>
+  <html>
+  <head></head>
+
+    <style type="text/css">
+
+.list {list-style:square;width:500px;padding-center:16px;}
+.list li{padding:2px;font-size:8pt;}
+
+pre {
+   font-size:11px; 
+}
+
+.x-tab-panel-body .x-panel-body {
+    padding:10px;
+}
+
+    </style>
+   
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockSection title="Order Information" collapsible="true" columns="5">
+         <table width="600">
+         <tr><td width="30%" align="right">Select Product</td>
+        <td width="10%"></td><td width="10%"></td>
+        <apex:selectList value="{!product}" size="1" id="product">
+          <apex:selectOptions value="{!products}"/>
+ <apex:actionSupport event="onchange"  action="{!productchange}"/>
+    </apex:selectList>  
+   <td width="10%"></td>                   
+ </tr>    
+ <tr><td align="right">Select Offering</td>
+    <td></td><td></td>
+    <apex:selectList value="{!selectedOfferingId}" size="1" id="offer">
+    <apex:selectOptions value="{!OfferingList}"/>
+                </apex:selectList>
+             </tr>
+    </table>
+    </apex:pageBlockSection>  
+ 
+       <body>
+<script language="javascript">
+Ext.onReady(function(){
+    //parent tabs
+    var tabs = new Ext.TabPanel({
+        renderTo: 'tabsContainer',
+        width:450,
+        activeTab: 0,
+        frame:true,
+        enableTabScroll : true,
+           
+        defaults:{autoHeight: true},
+        items:[ 
+       <apex:variable value="{!myofr1}" var="rowNum" rendered="{!disp}"/>
+       <apex:repeat value="{!myofr1}" var="record" id="theRepeat" rendered="{!disp}">
+         {contentEl:'{! myofr1}', title:'{!record.Name}'},
+  </apex:repeat>
+        ]
+    });
+        
+  var subtabs = new Ext.TabPanel({
+        renderTo: '{! myofr1}',
+        autoWidth:true,
+        activeTab: 0,
+        frame:true,
+        defaults:{autoHeight: true},
+             items:[
+          <apex:variable value="{! myofr2}" var="rowNum" rendered="{!disp}"/>
+       <apex:repeat value="{! myofr2}" var="record1" id="theRepeat1" rendered="{!disp}">
+            {contentEl:'{!myofr2}', title: '{!record1.Name}'},
+                       </apex:repeat>
+                       
+                   ],
+                                }     
+                                );
+
+                                                    });
+
+</script>
+<div id="tabsContainer">
+  <div id='{!myofr1}' class="x-hide-display">
+  <apex:actionSupport event="onchange"  action="{!servchange}"/>
+  <apex:inputCheckbox selected="true"/>include product<br/>
+<apex:selectCheckboxes value="{!selectedservice}" title="select offer">
+<apex:selectOptions value="{!suboffer}"/>
+
+</apex:selectCheckboxes>  
+   </div> 
+ <div id='{!myofr2}' class="x-hide-display">
+    </div>
+</div>                    
+</body> 
+
+    </apex:pageBlock>
+</apex:form>
+</html>
+
+</apex:page>

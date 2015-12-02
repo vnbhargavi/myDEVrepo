@@ -1,0 +1,75 @@
+<apex:page standardcontroller="Account" extensions="oeController" showheader="true" recordSetVar="records">
+
+<html>
+<head>
+<title>Hello World Window</title>
+<apex:includeScript value="{!urlFor($Resource.extjs, 'ext-3.0.0/adapter/ext/ext-base.js')}"/>
+    <apex:includeScript value="{!urlFor($Resource.extjs, 'ext-3.0.0/ext-all.js')}"/>  
+    <apex:stylesheet value="{!urlFor($Resource.extjs, 'ext-3.0.0/resources/css/ext-all.css')}"/>
+</head>
+
+<!-- Revised from demo code in ext3.0.0 -->
+<body>
+<script type="text/javascript">
+Ext.onReady(function(){
+
+ var ajaxtabPanels = new Ext.TabPanel({
+        renderTo: 'renderTabs',
+        activeTab: 0,
+        width:600,
+        height:250,
+        plain:true,
+        defaults:{autoScroll: true},
+        listeners: {
+        tabchange: function(tabPanel,newTab){
+             var thisObj = newTab.getUpdater();
+             if(thisObj) thisObj.refresh();
+          }
+        },
+        items:[{
+                title: 'Ajax Tab 1 - Simple Page without JS Code',
+                autoLoad:'ajaxtab1.html' // Simple Page without JavaScript Code
+            },{
+                title: 'Ajax Tab 2 - Page with JavaScript Code',
+                autoLoad:{url: 'ajaxtab2.html', scripts:true} //Simple Page with JavaScript Code
+            },{
+                title: 'Ajax Tab 3 Disabled',
+                disabled:true
+            }
+        ]
+    });
+    var ajaxtabPanels = new Ext.TabPanel({
+        renderTo: 'renderTabs',
+        activeTab: 0,
+        width:600,
+        height:250,
+        plain:true,
+        defaults:{autoScroll: true},
+        items:[{
+                title: 'Ajax Tab 1 - Simple Page without JS Code',
+                autoLoad:'ajaxtab1.html' // Simple Page without JavaScript Code
+            },{
+                title: 'Ajax Tab 2 - Page with JavaScript Code',
+                autoLoad:{url: 'ajaxtab2.html', scripts:true}, //Simple Page with JavaScript Code
+                listeners:{
+                    activate : function(tabpanel){
+                        tabpanel.getUpdater().refresh();
+                    }
+                }
+            },{
+                title: 'Ajax Tab 3 Disabled',
+                disabled:true
+            }
+        ]
+    }); 
+    
+     });
+</script> 
+</body>
+
+<div id="renderTabs"></div>
+
+</html>
+
+   
+</apex:page>
