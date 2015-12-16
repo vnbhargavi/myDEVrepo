@@ -1,6 +1,8 @@
 global class AccountREceivablespage
 {
+
 /*
+Adding  some dexcription
 <apex:page standardController="Account" extensions="GenerateAccountReceivablesController" sidebar="false" showHeader="false" tabStyle="Account">
  <apex:pageBlock title="Account Receivables">
  <apex:repeat value="{!thousandBlocks}" var="block">
